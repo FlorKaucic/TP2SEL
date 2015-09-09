@@ -14,7 +14,6 @@ public class FileWorker {
 			archivo = new File(ruta);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
-
 			if ((linea = br.readLine()) != null)
 				tamVec = Integer.parseInt(linea);
 			vec.vec = new double[tamVec];
