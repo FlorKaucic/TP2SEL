@@ -1,7 +1,5 @@
 package sel;
 
-import java.util.Arrays;
-
 public class VectorMath {
 	private static final double errTol = 0.00001;
 	double[] vec = null;
@@ -26,7 +24,19 @@ public class VectorMath {
 			this.vec[i] = v[i];
 		}
 	}
+	
+	public int getDim(){
+		return this.dim;
+	}
 
+	public double[] getVec(){
+		return this.vec;
+	}
+	
+	public double getValue(int i){
+		return this.vec[i];
+	}
+	
 	public VectorMath sumar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
@@ -60,12 +70,12 @@ public class VectorMath {
 
 	public VectorMath multiplicar(MatrizMath obj) throws DistDimException {
 		// V x M = V
-		if (this.dim != obj.dimF)
+		if (this.dim != obj.getDimF())
 			throw new DistDimException(" Distinta Dimension ");
-		VectorMath aux = new VectorMath(obj.dimC);
-		for (int j = 0; j < obj.dimC; j++)
+		VectorMath aux = new VectorMath(obj.getDimC());
+		for (int j = 0; j < obj.getDimC(); j++)
 			for (int i = 0; i < this.dim; i++)
-				aux.vec[j] += this.vec[i] * obj.mat[i][j];
+				aux.vec[j] += this.vec[i] * obj.getValue(i,j);
 		return aux;
 	}
 
@@ -101,10 +111,9 @@ public class VectorMath {
 	}
 
 	public boolean equals(VectorMath obj) throws DistDimException {
-		double aux;
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		return (aux = obj.normaDos()) < errTol;
+		return obj.normaDos() < errTol;
 	}
 
 	public VectorMath clone() {

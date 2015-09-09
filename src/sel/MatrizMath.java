@@ -4,9 +4,9 @@ public class MatrizMath {
 	
 	private static final double errTol = 0.00001;
 	
-	double[][] mat = null;
-	int dimF = 0;
-	int dimC = 0;
+	private double[][] mat = null;
+	private int dimF = 0;
+	private int dimC = 0;
 
 	public MatrizMath(int f, int c) {
 		dimF = f;
@@ -20,9 +20,7 @@ public class MatrizMath {
 		this.mat = null;
 	}
 
-	//ELIMINAR
 	public MatrizMath(double[][] m){
-		// Constructor para hardcodear matriz
 		this.dimF = m.length;
 		this.dimC = m[0].length;
 		this.mat = new double[this.dimF][this.dimC];
@@ -33,6 +31,21 @@ public class MatrizMath {
 		}
 	}
 	
+	public int getDimF(){
+		return this.dimF;
+	}
+	
+	public int getDimC(){
+		return this.dimC;
+	}
+	
+	public double[][] getMat(){
+		return this.mat;
+	}
+	
+	public double getValue(int f, int c){
+		return this.mat[f][c];
+	}
 	public MatrizMath sumar(MatrizMath obj) throws DistDimException {
 		if (this.dimF != obj.dimF || this.dimC != obj.dimC)
 			throw new DistDimException(" Distinta Dimension ");
@@ -65,13 +78,13 @@ public class MatrizMath {
 	}
 
 	public VectorMath multiplicar(VectorMath obj) throws DistDimException { 
-		if (this.dimC != obj.dim)
+		if (this.dimC != obj.getDim())
 			throw new DistDimException(" Distinta Dimension ");
-		VectorMath aux = new VectorMath(this.dimF);
+		double[] aux = new double[this.dimF];
 		for (int i = 0; i < this.dimF; i++)
 			for (int j = 0; j < this.dimC; j++)
-				aux.vec[i] += this.mat[i][j] * obj.vec[j];
-		return aux;
+				aux[i] += this.mat[i][j] * obj.vec[j];
+		return new VectorMath(aux);
 	}
 
 	public MatrizMath multiplicar(double real) {
