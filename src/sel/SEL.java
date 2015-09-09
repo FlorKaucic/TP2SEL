@@ -16,7 +16,7 @@ public class SEL {
 	}
 
 	public void resolver() {
-		
+//		GaussJordan.gaussJordan(a, b);
 	}
 
 	public double calcularErrorSolucion(){
