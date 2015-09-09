@@ -1,4 +1,4 @@
-package vectormath;
+package tp2sel;
 
 public class MatrizMath {
 	private static final double errTol = 0.00001;

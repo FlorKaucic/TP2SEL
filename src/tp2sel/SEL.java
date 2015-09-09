@@ -1,4 +1,4 @@
-package vectormath;
+package tp2sel;
 
 public class SEL {
 	/*
