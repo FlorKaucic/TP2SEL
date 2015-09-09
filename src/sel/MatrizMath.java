@@ -109,6 +109,7 @@ public class MatrizMath {
 				aux = this.mat[i][j]>0?this.mat[i][j]:-this.mat[i][j];
 				normaInf = normaInf>aux?normaInf:aux;
 			}
+		return normaInf;
 	}
 	
 	public boolean equals (MatrizMath obj)
