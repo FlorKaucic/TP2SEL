@@ -37,6 +37,10 @@ public class VectorMath {
 		return this.vec[i];
 	}
 	
+	public void setValue(int i, double value){
+		this.vec[i] = value;
+	}
+	
 	public VectorMath sumar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");

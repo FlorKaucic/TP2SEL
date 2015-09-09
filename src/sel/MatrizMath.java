@@ -46,6 +46,11 @@ public class MatrizMath {
 	public double getValue(int f, int c){
 		return this.mat[f][c];
 	}
+	
+	public void setValue(int f, int c, double value){
+		this.mat[f][c] = value;
+	}
+	
 	public MatrizMath sumar(MatrizMath obj) throws DistDimException {
 		if (this.dimF != obj.dimF || this.dimC != obj.dimC)
 			throw new DistDimException(" Distinta Dimension ");
