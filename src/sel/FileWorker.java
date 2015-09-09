@@ -3,7 +3,18 @@ package sel;
 import java.io.*;
 
 public class FileWorker {
-	public void leerArchivoVec(String ruta, VectorMath vec, MatrizMath mat) {
+	MatrizMath mat;
+	VectorMath vec;
+	
+	public MatrizMath getMatriz(){
+		return mat;
+	}
+	
+	public VectorMath getVector(){
+		return vec;
+	}
+	
+	public void leerArchivo(String ruta) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -16,18 +27,20 @@ public class FileWorker {
 			if ((linea = br.readLine()) != null)
 				tam = Integer.parseInt(linea);
 			double[][] m = new double[tam][tam];
-			while ((linea = br.readLine()) != null) {
+			double[] v = new double[tam];
+			int c = 0;
+			while(c<(tam*tam) && (linea = br.readLine()) != null) {
 				String[] data = linea.split(" ");
 				m[Integer.parseInt(data[0])][Integer.parseInt(data[1])] = Double.parseDouble(data[2]);
+				c++;
 			}
 			mat = new MatrizMath(m);
-			double[] v = new double[tam];
-			for (int i = 0; i < tam; i++) {
+			for(int i = 0; i < tam; i++) {
 				linea = br.readLine();
 				v[i] = Double.parseDouble(linea);
 			}
 			vec = new VectorMath(v);
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -39,7 +52,7 @@ public class FileWorker {
 		}
 	}
 
-	public boolean escribirArchivoVec(VectorMath obj, String ruta) {
+	public boolean escribirArchivo(VectorMath obj, String ruta) {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 
