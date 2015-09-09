@@ -59,9 +59,7 @@ public class MatrizMath {
 		MatrizMath aux = new MatrizMath(this.dimF, obj.dimC);
 		for (int i = 0; i < this.dimF; i++)
 			for (int j = 0; j < obj.dimC; j++)
-				for (int k = 0; k < this.dimC; k++) // podria haber usado
-													// obj.dimF en lugar de
-													// this.dimC
+				for (int k = 0; k < this.dimC; k++)
 					aux.mat[i][j] += this.mat[i][k] * obj.mat[k][j];
 		return aux;
 	}

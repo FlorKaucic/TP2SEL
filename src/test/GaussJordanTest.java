@@ -27,7 +27,6 @@ public class GaussJordanTest {
 		System.out.println("Matriz: " + mat);
 		System.out.println("Matriz identidad: " + id);
 		
-		
 		System.out.println("Prueba");
 
 		System.out.println(GaussJordan.gaussJordan(m, n));

@@ -30,9 +30,8 @@ public class VectorMath {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
 
-		VectorMath aux = new VectorMath(this.dim); // o obj.dim, da igual porque
-													// tienen la misma a dim a
-													// esta altura
+		VectorMath aux = new VectorMath(this.dim);
+		
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] + obj.vec[i];
 		return aux;
@@ -41,9 +40,9 @@ public class VectorMath {
 	public VectorMath restar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		VectorMath aux = new VectorMath(this.dim); // o obj.dim, da igual porque
-													// tienen la misma a dim a
-													// esta altura
+		
+		VectorMath aux = new VectorMath(this.dim);
+		
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] - obj.vec[i];
 		return aux;
@@ -122,21 +121,5 @@ public class VectorMath {
 		}
 		return cadena;
 	}
-
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		VectorMath other = (VectorMath) obj;
-//		if (dim != other.dim)
-//			return false;
-//		if (!Arrays.equals(vec, other.vec))
-//			return false;
-//		return true;
-//	}
 
 }
