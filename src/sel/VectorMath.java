@@ -75,11 +75,11 @@ public class VectorMath {
 			aux.vec[i] = this.vec[i] * real;
 		return aux;
 	}
-
-	public double normaUno() {
-		double norma1 = 0;
-		for (int i = 0; i < this.dim; i++)
-			norma1 += (this.vec[i] >= 0 ? this.vec[i] : -this.vec[i]);
+	public double normaUno()
+	{
+		double norma1=0;
+		for(int i=0;i<this.dim;i++)
+			norma1+=(this.vec[i]>=0?this.vec[i]:-this.vec[i]);
 		return norma1;
 	}
 

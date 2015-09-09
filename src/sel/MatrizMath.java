@@ -82,6 +82,47 @@ public class MatrizMath {
 		return aux;
 	}
 
+	public double normaUno()
+	{
+		double norma1=0;
+		for(int i=0;i<this.dimF;i++)
+			for(int j=0;j<this.dimC;j++)
+				norma1+= this.mat[i][j]>0?this.mat[i][j]:-this.mat[i][j];
+		return norma1;
+	}
+	
+	public double normaDos()
+	{
+		double norma2=0;
+		for(int i=0;i<this.dimF;i++)
+			for(int j=0;j<this.dimC;j++)
+				norma2+= this.mat[i][j]*this.mat[i][j];
+		return Math.sqrt(norma2);
+	}
+	
+	public double normaInfinito()
+	{
+		double aux, normaInf = 0;
+		for(int i=0;i<this.dimF;i++)
+			for(int j=0;j<this.dimC;j++)
+			{	
+				aux = this.mat[i][j]>0?this.mat[i][j]:-this.mat[i][j];
+				normaInf = normaInf>aux?normaInf:aux;
+			}
+	}
+	
+	public boolean equals (MatrizMath obj)
+	{
+		// podria haber creado una matriz auxiliar, pero si necesito ||A-A'||2 <E, entonces
+		// al ser la norma, estaria haciendo la raiz cuadrada de la diferencia de los Aij de ambas matrices
+		double normaDif = 0;
+		for(int i=0;i<this.dimF;i++)
+			for(int j=0;j<this.dimC;j++)
+				normaDif+= (this.mat[i][j] - obj.mat[i][j])*(this.mat[i][j] - obj.mat[i][j]);
+		return Math.sqrt(normaDif)<errTol; //si la norma es mas chica que el error tolerado, son "iguales"
+	}
+	
+	
 	@Override
 	public String toString() {
 		String cadena = "";
