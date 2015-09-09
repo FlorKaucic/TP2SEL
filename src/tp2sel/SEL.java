@@ -11,12 +11,17 @@ public class SEL {
 	 */
 	MatrizMath a;
 	VectorMath b;
+	VectorMath x;
 	
 	public SEL(MatrizMath a, VectorMath b) {
 		super();
 		this.a = a;
 		this.b = b;
 	}
+	
+	
+	
+	
 	
 	
 }
