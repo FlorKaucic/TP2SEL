@@ -75,7 +75,8 @@ public class MatrizMath {
 				aux.vec[i] += this.mat[i][j] * obj.vec[j];
 		return aux;
 	}
-
+	
+	
 	public MatrizMath multiplicar(double real) {
 		MatrizMath aux = new MatrizMath(this.dimF, this.dimC);
 		for (int i = 0; i < this.dimF; i++)

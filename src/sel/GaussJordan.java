@@ -6,7 +6,7 @@ public class GaussJordan {
 	//Tiene sysos por todos lados porque quería ver paso a paso que hacía para detectar los errores
 	public static boolean esIdentidad(double m1[][])
 	{
-		for (int i=0;i<5;i++)
+		for (int i=0;i<m1.length;i++)
 			for(int j=0;j<5;j++)
 			{
 				if(i==j && m1[i][j]!=1)
@@ -31,6 +31,7 @@ public class GaussJordan {
 					//System.out.println("Prueba"+ y);
 				for(j=0;j<5;j++)
 				{
+					
 					m1[y][j]*=k;
 					m2[y][j]*=k;
 					//System.out.println("Prueba"+j);
@@ -92,52 +93,5 @@ public class GaussJordan {
 	
 	
 	
-	public static void main(String[] args) {
-		double [][] m = new double[5][5];
-		double [][] n = new double[5][5];
-		
-		for(int i=0;i<5;i++)
-			for(int j=0; j<5; j++)
-				m[i][j]= i+j+1;
-		
-		for(int i=0;i<5;i++)
-			for(int j=0; j<5; j++)
-				{
-					if(i==j)n[i][j]= 1;
-					else n[i][j]= 0;
-				}
-		for(int i=0;i<5;i++)
-		{	for(int j=0; j<5; j++)
-				{	System.out.print(m[i][j]);
-					
-				}
-			System.out.println("");
-		}
-		for(int i=0;i<5;i++)
-		{	for(int j=0; j<5; j++)
-				{	System.out.print(n[i][j]);
-					
-				}
-			System.out.println("");
-		}
-		System.out.println("Prueba");
-		
-		System.out.println(gaussJordan(m,n));
-		
-		for(int i=0;i<5;i++)
-		{	for(int j=0; j<5; j++)
-				{	System.out.print(m[i][j]);
-					
-				}
-			System.out.println("");
-		}
-		
-		for(int i=0;i<5;i++)
-		{	for(int j=0; j<5; j++)
-				{	System.out.print(n[i][j]);
-					
-				}
-			System.out.println("");
-		}
-		}
+
 	}
