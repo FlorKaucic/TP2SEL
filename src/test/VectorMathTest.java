@@ -11,6 +11,7 @@ public class VectorMathTest {
 		System.out.println("Vector: "+vec);
 
 		VectorMath newvec = vec.multiplicar(0.5);
+		System.out.println(vec.multiplicar(0.5));
 		System.out.println("Vector: "+newvec);
 
 	}

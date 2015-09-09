@@ -8,6 +8,7 @@ public class VectorMath {
 	int dim;
 
 	public VectorMath(int dimension) {
+		this.dim = dimension;
 		this.vec = new double[dimension];
 	}
 
