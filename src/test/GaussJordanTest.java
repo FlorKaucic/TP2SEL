@@ -6,8 +6,8 @@ import sel.MatrizMath;
 public class GaussJordanTest {
 
 	public static void main(String[] args) {
-		int[][] m = new int[5][5];
-		int[][] n = new int[5][5];
+		double[][] m = new double[5][5];
+		double[][] n = new double[5][5];
 
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 5; j++)
@@ -21,8 +21,13 @@ public class GaussJordanTest {
 					n[i][j] = 0;
 			}
 
-		//MatrizMath mat = new MatrizMath(m);
-		System.out.println("Matriz identidad: " + n);
+		MatrizMath mat = new MatrizMath(m);
+		MatrizMath id = new MatrizMath(n);
+		
+		System.out.println("Matriz: " + mat);
+		System.out.println("Matriz identidad: " + id);
+		
+		
 		System.out.println("Prueba");
 
 		System.out.println(GaussJordan.gaussJordan(m, n));
