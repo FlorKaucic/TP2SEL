@@ -72,7 +72,7 @@ public class VectorMath{
 		double norma2=0;
 		for(int i=0;i<this.dim;i++)
 			norma2 += this.vec[i]*this.vec[i];
-		return norma2;
+		return Math.sqrt(norma2);
 	}
 	public double normaInfinito()
 	{
