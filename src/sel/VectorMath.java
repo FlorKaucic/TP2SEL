@@ -71,7 +71,7 @@ public class VectorMath {
 	public VectorMath multiplicar(double real) {
 		VectorMath aux = new VectorMath(this.dim);
 		for (int i = 0; i < this.dim; i++)
-			aux.vec[i] *= real;
+			aux.vec[i] = this.vec[i] * real;
 		return aux;
 	}
 
