@@ -37,8 +37,8 @@ public class GaussJordan {
 			{
 				if(i!=y)
 					for(j=0;j<5;j++){
-						m1[i][j]-=m1[y][j];
-						m2[i][j]-=m2[y][j];
+						m1[y][j]-=m1[i][j];
+						m2[y][j]-=m2[i][j];
 					}
 			}
 			
