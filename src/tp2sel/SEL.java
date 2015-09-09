@@ -9,4 +9,14 @@ public class SEL {
 		* mostrarResultado()
 		* calcularErrorSolucion()
 	 */
+	MatrizMath a;
+	VectorMath b;
+	
+	public SEL(MatrizMath a, VectorMath b) {
+		super();
+		this.a = a;|
+		this.b = b;
+	}
+	
+	
 }
