@@ -3,25 +3,27 @@ package tp2sel;
 public class SEL {
 	/*
 	 * SEL (Sistemas de ecuaciones lineales)
-		* constructores
-		* static bool test()
+		* constructores -- done
+		* static bool test() -- whaat
 		* resolver ()
 		* mostrarResultado()
-		* calcularErrorSolucion()
+		* calcularErrorSolucion() -- juan tiene la solucion magica
 	 */
 	MatrizMath a;
 	VectorMath b;
 	VectorMath x;
 	
 	public SEL(MatrizMath a, VectorMath b) {
-		super();
 		this.a = a;
 		this.b = b;
 	}
 	
+	public void resolver(){
+		
+	}
 	
-	
-	
-	
+	public void mostrarResultado(){
+		
+	}
 	
 }
