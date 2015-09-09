@@ -14,7 +14,7 @@ public class SEL {
 	
 	public SEL(MatrizMath a, VectorMath b) {
 		super();
-		this.a = a;|
+		this.a = a;
 		this.b = b;
 	}
 	
