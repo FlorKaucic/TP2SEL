@@ -1,4 +1,4 @@
-package tp2sel;
+package sel;
 
 public class Tester {
 
