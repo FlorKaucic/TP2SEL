@@ -1,13 +1,12 @@
 package sel;
 
-import java.util.Arrays;
-
 public class VectorMath {
 	private static final double errTol = 0.00001;
 	double[] vec = null;
 	int dim;
 
 	public VectorMath(int dimension) {
+		this.dim = dimension;
 		this.vec = new double[dimension];
 	}
 
@@ -25,14 +24,29 @@ public class VectorMath {
 			this.vec[i] = v[i];
 		}
 	}
+	
+	public int getDim(){
+		return this.dim;
+	}
 
+	public double[] getVec(){
+		return this.vec;
+	}
+	
+	public double getValue(int i){
+		return this.vec[i];
+	}
+	
+	public void setValue(int i, double value){
+		this.vec[i] = value;
+	}
+	
 	public VectorMath sumar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
 
-		VectorMath aux = new VectorMath(this.dim); // o obj.dim, da igual porque
-													// tienen la misma a dim a
-													// esta altura
+		VectorMath aux = new VectorMath(this.dim);
+		
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] + obj.vec[i];
 		return aux;
@@ -41,9 +55,9 @@ public class VectorMath {
 	public VectorMath restar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		VectorMath aux = new VectorMath(this.dim); // o obj.dim, da igual porque
-													// tienen la misma a dim a
-													// esta altura
+		
+		VectorMath aux = new VectorMath(this.dim);
+		
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] - obj.vec[i];
 		return aux;
@@ -60,26 +74,28 @@ public class VectorMath {
 
 	public VectorMath multiplicar(MatrizMath obj) throws DistDimException {
 		// V x M = V
-		if (this.dim != obj.dimF)
+		if (this.dim != obj.getDimF())
 			throw new DistDimException(" Distinta Dimension ");
-		VectorMath aux = new VectorMath(obj.dimC);
-		for (int j = 0; j < obj.dimC; j++)
+		VectorMath aux = new VectorMath(obj.getDimC());
+		for (int j = 0; j < obj.getDimC(); j++)
 			for (int i = 0; i < this.dim; i++)
-				aux.vec[j] += this.vec[i] * obj.mat[i][j];
+				aux.vec[j] += this.vec[i] * obj.getValue(i,j);
 		return aux;
 	}
 
 	public VectorMath multiplicar(double real) {
+		
 		VectorMath aux = new VectorMath(this.dim);
 		for (int i = 0; i < this.dim; i++)
-			aux.vec[i] = this.vec[i]*real;
+			aux.vec[i] = this.vec[i] * real;
+
 		return aux;
 	}
-
-	public double normaUno() {
-		double norma1 = 0;
-		for (int i = 0; i < this.dim; i++)
-			norma1 += (this.vec[i] >= 0 ? this.vec[i] : -this.vec[i]);
+	public double normaUno()
+	{
+		double norma1=0;
+		for(int i=0;i<this.dim;i++)
+			norma1+=(this.vec[i]>=0?this.vec[i]:-this.vec[i]);
 		return norma1;
 	}
 
@@ -101,10 +117,9 @@ public class VectorMath {
 	}
 
 	public boolean equals(VectorMath obj) throws DistDimException {
-		double aux;
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		return (aux = obj.normaDos()) < errTol;
+		return obj.normaDos() < errTol;
 	}
 
 	public VectorMath clone() {
@@ -122,21 +137,5 @@ public class VectorMath {
 		}
 		return cadena;
 	}
-
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		VectorMath other = (VectorMath) obj;
-//		if (dim != other.dim)
-//			return false;
-//		if (!Arrays.equals(vec, other.vec))
-//			return false;
-//		return true;
-//	}
 
 }

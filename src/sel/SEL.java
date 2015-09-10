@@ -1,26 +1,31 @@
 package sel;
 
 public class SEL {
-	/*
-	 * SEL (Sistemas de ecuaciones lineales) constructores -- done static bool
-	 * test() -- whaat resolver () mostrarResultado() calcularErrorSolucion() --
-	 * juan tiene la solucion magica
-	 */
+	
 	MatrizMath a;
 	VectorMath b;
-	VectorMath x;
 
 	public SEL(MatrizMath a, VectorMath b) {
 		this.a = a;
 		this.b = b;
 	}
-
-	public void resolver() {
-
+	
+	public static boolean test(){
+		// Cambiar return
+		return true;
 	}
 
+	public void resolver() {
+//		GaussJordan.gaussJordan(a, b);
+	}
+
+	public double calcularErrorSolucion(){
+		// Cambiar return
+		return 1;
+	}
+	
 	public void mostrarResultado() {
-		System.out.println("Resultado: " + x);
+		System.out.println("Resultado: " + b);
 	}
 
 }

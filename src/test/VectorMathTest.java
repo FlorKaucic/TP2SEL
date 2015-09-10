@@ -9,10 +9,14 @@ public class VectorMathTest {
 		// Vector hardcodeado
 		VectorMath vec = new VectorMath(new double[]{3,4.2,9});
 		System.out.println("Vector: "+vec);
+
 		
 		VectorMath newvec = vec.multiplicar(0.5);
-		System.out.println("Vector: "+newvec);
 		
+		System.out.println(vec.multiplicar(0.5));
+		System.out.println("Vector: "+newvec);
+
+
 	}
 
 }

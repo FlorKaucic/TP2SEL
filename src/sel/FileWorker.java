@@ -7,21 +7,21 @@ public class FileWorker {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
-		VectorMath vec = new VectorMath();
-		int tamVec = 0;
+		VectorMath vec = null;
 		try {
 			String linea;
 			archivo = new File(ruta);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
-
+			int tamVec = 0;
 			if ((linea = br.readLine()) != null)
 				tamVec = Integer.parseInt(linea);
-			vec.vec = new double[tamVec];
+			double[] v = new double[tamVec];
 			for (int i = 0; i < tamVec; i++) {
 				linea = br.readLine();
-				vec.vec[i] = Double.parseDouble(linea);
+				v[i] = Double.parseDouble(linea);
 			}
+			vec = new VectorMath(v);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -64,8 +64,7 @@ public class FileWorker {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
-		MatrizMath mat = new MatrizMath();
-
+		MatrizMath mat = null;
 		try {
 			String[] data;
 			String linea;
@@ -78,16 +77,12 @@ public class FileWorker {
 				f = Integer.parseInt(data[0]);
 				c = Integer.parseInt(data[1]);
 			}
-			mat.mat = new double[f][c]; // podria haber creado un objeto nuevo
-										// con f y c, pero me parecio mejor esto
-			// es discutible porque, si cambiara el tipo de dato en la clase,
-			// esto tendria que cambiarlo tambien
+			double[][] m = new double[f][c];
 			while ((linea = br.readLine()) != null) {
 				data = linea.split(" ");
-				mat.mat[Integer.parseInt(data[0])][Integer.parseInt(data[1])] = Double.parseDouble(data[2]);
-			} // si uso 2 ciclos for desperdicio los indices que me da el
-				// archivo, no se que sea mejor en este punto
-			// si usar los indices, o usar i y j del ciclo for.
+				m[Integer.parseInt(data[0])][Integer.parseInt(data[1])] = Double.parseDouble(data[2]);
+			}
+			mat = new MatrizMath(m);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -109,10 +104,10 @@ public class FileWorker {
 			fw = new FileWriter(ruta);
 			pw = new PrintWriter(fw);
 
-			pw.println(obj.dimF + " " + obj.dimC); // mismo formato que el .in
-			for (int i = 0; i < obj.dimF; i++)
-				for (int j = 0; j < obj.dimC; j++) {
-					pw.println(i + " " + j + " " + obj.mat[i][j]);
+			pw.println(obj.getDimF() + " " + obj.getDimC()); // mismo formato que el .in
+			for (int i = 0; i < obj.getDimF(); i++)
+				for (int j = 0; j < obj.getDimC(); j++) {
+					pw.println(i + " " + j + " " + obj.getValue(i,j));
 				}
 		} catch (Exception e) {
 			e.printStackTrace();
