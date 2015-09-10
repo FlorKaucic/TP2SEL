@@ -145,7 +145,14 @@ public class MatrizMath {
 				normaDif+= (this.mat[i][j] - obj.mat[i][j])*(this.mat[i][j] - obj.mat[i][j]);
 		return Math.sqrt(normaDif)<errTol; //si la norma es mas chica que el error tolerado, son "iguales"
 	}
-	
+
+	public MatrizMath clone() {
+		MatrizMath aux = new MatrizMath(this.dimF, this.dimC);
+		for (int i = 0; i < this.dimF; i++)
+			for(int j = 0; j < this.dimC; j++)
+				aux.mat[i][j] = this.mat[i][j];
+		return aux;
+	}
 	
 	@Override
 	public String toString() {
