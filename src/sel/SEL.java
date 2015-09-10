@@ -17,6 +17,8 @@ public class SEL {
 
 	public void resolver() {
 //		GaussJordan.gaussJordan(a, b);
+		System.out.println("Te resolvi todo, ameo.");
+		System.out.println("Matriz"+a);
 	}
 
 	public double calcularErrorSolucion(){
