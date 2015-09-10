@@ -3,7 +3,7 @@ package sel;
 
 public class GaussJordan {
 	
-	//Tiene sysos por todos lados porque quería ver paso a paso que hacía para detectar los errores
+	//Tiene sysos por todos lados para ver paso a paso que hacía para detectar los errores
 	public static boolean esIdentidad(MatrizMath m1)
 	{
 		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()),
@@ -29,13 +29,13 @@ public class GaussJordan {
 				if(m1.getMat()[y][i]!=0 && y>=i){
 				
 					k = 1/m1.getMat()[y][i];
-					//System.out.println("Prueba"+ y);
+					
 				for(j=0;j<m1.getDimF();j++)
 				{
 					
 					m1.getMat()[y][j]*=k;
 					m2.getMat()[y][j]*=k;
-					//System.out.println("Prueba"+j);
+					
 					for(int l=0;l<m1.getDimF();l++)
 					{	for(int h=0; h<5; h++)
 							{	System.out.print(m1.getMat()[l][h] + "\t");
@@ -59,7 +59,7 @@ public class GaussJordan {
 					
 						m1.getMat()[y][j]-=m1.getMat()[i][j]*k;
 						m2.getMat()[y][j]-=m2.getMat()[i][j]*k;
-						//System.out.println("Prueba"+j+i);
+						
 						for(int l=0;l<m1.getDimF();l++)
 						{	for(int h=0; h<5; h++)
 								{	System.out.print(m1.getMat()[l][h]+"\t");
