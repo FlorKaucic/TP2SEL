@@ -1,102 +1,54 @@
 package sel;
 
-
 public class GaussJordan {
-	
-	//Tiene sysos por todos lados para ver paso a paso que hacía para detectar los errores
-	public static boolean esIdentidad(MatrizMath m1)
-	{
-		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()),
-				   aux;
-		
-		for(int i=0; i<m1.getMat().length; i++)
+
+	// Tiene sysos por todos lados para ver paso a paso que hacía para detectar
+	// los errores
+	public static boolean esIdentidad(MatrizMath m1) {
+		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()), aux;
+
+		for (int i = 0; i < m1.getMat().length; i++)
 			id.setValue(i, i, 1);
 		aux = m1.restar(id);
-		if(aux.normaDos() < m1.getErrTol())
+		if (aux.normaDos() < m1.getErrTol())
 			return true;
-		
+
 		return false;
 	}
-	public static int gaussJordan(MatrizMath m1, MatrizMath m2){
-		int i=0, y=0, j=0, a=0, z=0;
+
+	public static int gaussJordan(MatrizMath m1, MatrizMath m2) {
+		int a, f, i = 0;
 		double k;
-		while(!esIdentidad(m1) && z<10){
-			System.out.println(i);
-			if(i==5)
-				i=0;
-			
-			for(y=0;y<m1.getDimF();y++){
-				if(m1.getMat()[y][i]!=0 && y>=i){
-				
-					k = 1/m1.getMat()[y][i];
-					
-				for(j=0;j<m1.getDimF();j++)
-				{
-					
-					m1.getMat()[y][j]*=k;
-					m2.getMat()[y][j]*=k;
-					
-					for(int l=0;l<m1.getDimF();l++)
-					{	for(int h=0; h<5; h++)
-							{	System.out.print(m1.getMat()[l][h] + "\t");
-								
-							}
-						System.out.println("");
-					}
-					System.out.println("---------");
-				}
-				}
-			}
-			for(y=0; y<m1.getDimF(); y++)
-			{
-				if(i!=y){
-					if(y<i)
-						k = m1.getMat()[y][i];
-					else
-						k=1;
-					for(j=0;j<5;j++){
-					
-					
-						m1.getMat()[y][j]-=m1.getMat()[i][j]*k;
-						m2.getMat()[y][j]-=m2.getMat()[i][j]*k;
-						
-						for(int l=0;l<m1.getDimF();l++)
-						{	for(int h=0; h<5; h++)
-								{	System.out.print(m1.getMat()[l][h]+"\t");
-									
-								}
-							System.out.println("");
+
+		// cuando el pivot es 0, verificar toda la fila si es 0
+		// si la fila no es 0, buscar una fila que sumarle.
+
+		while (!esIdentidad(m1) && (a = seguir(m1) != 0)) {
+			if (i == m1.getMat().length)
+				i = 0;
+			//for (int y = 0; y < m1.getMat().length; y++) {
+				if (m1.getMat()[i][i] < m1.getErrTol())
+					if (verSiFilaCero(m1, i, m1.getErrTol()))
+						return 0;
+					else {
+						f = buscarFila(m1, i, m1.getErrTol());
+						if(f>0){
+							sumarFilas(m1, i, f);
+							sumarFilas(m2, i, f);
 						}
-						System.out.println("---------");
 					}
+				else {
+					k = 1 / m1.getMat()[i][i];
+					multiplicarFila(m1, i, k);
+					multiplicarFila(m2, i, k);
+					for (int j = 0; j < m1.getMat().length; j++) {
+						restarFilas(m1, i, j);
+						restarFilas(m2, i, j);
 					}
-			}
-			System.out.println("Prueba"+i +","+z);
-			z++;
-			for(y=0;y<m1.getDimF();y++)
-			{	for(j=0; j<5; j++)
-					{	System.out.print(m1.getMat()[y][j]+"\t");
-						
-					}
-				System.out.println("");
-			}
-			System.out.println("---------");
-			
-			
-			i++;
-			
-			
-			
+				}
+
+			//}
 		}
-		a=1;
 		return a;
-
-	}	
-	
-	
-	
-
 	}
-
-
-
+}
