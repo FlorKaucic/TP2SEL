@@ -8,6 +8,7 @@ public class MatrizMath {
 	private int dimF = 0;
 	private int dimC = 0;
 
+	
 	public MatrizMath(int f, int c) {
 		dimF = f;
 		dimC = c;
@@ -53,6 +54,43 @@ public class MatrizMath {
 	
 	public void setValue(int f, int c, double value){
 		this.mat[f][c] = value;
+	}
+	
+	public boolean verSiFilaCero(MatrizMath m, int i, double tol){
+		for(int j=0; j<m.getMat().length; j++)
+			if(Math.abs(m.getValue(i, j))>tol)
+				return false;
+		return true;				
+	}
+	
+	public int buscarFila(MatrizMath m, int i, double tol){
+		for(int j=0; j < m.getMat().length; j++)
+			if(Math.abs(m.getValue(j, i))>tol)
+				return j;
+		return -1;
+	}
+	
+	public void sumarFilas(MatrizMath m, int i, int f){
+		for(int j=0; j< m.getMat().length; j++)
+			m.setValue(i, j, m.getValue(i, j)+m.getValue(f, j));
+	}
+	
+	public void multiplicarFila(MatrizMath m, int i, double k){
+		for(int j=0; j< m.getMat().length; j++)
+			m.setValue(i, j, m.getValue(i, j)*k);
+	}
+	
+	public void restarFilas(MatrizMath m, int i, int j, double tol){
+		double k=1;
+		int n;
+		if(i>j){
+			if(Math.abs(k=m.getValue(j, i))>tol)
+				for(n=0; n<m.getMat().length; n++)
+					m.setValue(j, n, m.getValue(j, n)-(m.getValue(i, j)*k));
+		}
+		else
+			for(n=0; n<m.getMat().length; n++)
+				m.setValue(j, n, m.getValue(j, n)-m.getValue(i, j));
 	}
 	
 	public MatrizMath sumar(MatrizMath obj) throws DistDimException {
