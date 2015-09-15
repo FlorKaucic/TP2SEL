@@ -1,6 +1,6 @@
 package test;
 
-import sel.GaussJordan;
+//import sel.GaussJordan;
 
 import sel.MatrizMath;
 
@@ -30,7 +30,7 @@ public class GaussJordanTest {
 		*/
 		System.out.println("Prueba");
 
-		System.out.println(GaussJordan.gaussJordan(m, n));
+		//System.out.println(GaussJordan.gaussJordan(m, n));
 		System.out.println("slsls");
 
 		for (int i = 0; i < 5; i++) {

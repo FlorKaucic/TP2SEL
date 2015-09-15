@@ -63,6 +63,12 @@ public class MatrizMath {
 		return true;				
 	}
 	
+	public boolean verSiColCero(MatrizMath m, int i, double tol){
+		for(int j=0; j<m.getMat().length; j++)
+			if(Math.abs(m.getValue(j, i))>tol)
+				return false;
+		return true;		
+	}
 	public int buscarFila(MatrizMath m, int i, double tol){
 		for(int j=0; j < m.getMat().length; j++)
 			if(Math.abs(m.getValue(j, i))>tol)
@@ -92,6 +98,19 @@ public class MatrizMath {
 			for(n=0; n<m.getMat().length; n++)
 				m.setValue(j, n, m.getValue(j, n)-m.getValue(i, j));
 	}
+	
+	public boolean esIdentidad(MatrizMath m1) {
+		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()), aux;
+
+		for (int i = 0; i < m1.getMat().length; i++)
+			id.setValue(i, i, 1);
+		aux = m1.restar(id);
+		if (aux.normaDos() < m1.getErrTol())
+			return true;
+
+		return false;
+	}
+
 	
 	public MatrizMath sumar(MatrizMath obj) throws DistDimException {
 		if (this.dimF != obj.dimF || this.dimC != obj.dimC)

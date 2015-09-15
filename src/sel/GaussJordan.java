@@ -1,20 +1,22 @@
 package sel;
 
+import org.omg.CORBA.VersionSpecHelper;
+
 public class GaussJordan {
-
-	public boolean esIdentidad(MatrizMath m1) {
-		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()), aux;
-
-		for (int i = 0; i < m1.getMat().length; i++)
-			id.setValue(i, i, 1);
-		aux = m1.restar(id);
-		if (aux.normaDos() < m1.getErrTol())
-			return true;
-
-		return false;
+	
+	public int seguir(MatrizMath m){
+		int i;
+		for(i=0; i<m.getMat().length; i++)
+			if(verSiFilaCero(m, i, m.getErrTol())==true);
+				return 0;
+		
+		for(i=0; i<m.getMat().length;i++)
+			if(verSiColCero(m, i, m.getErrTol())==true);
+				return 0;
+		return 1;
+		
 	}
 	
-
 	public int gaussJordan(MatrizMath m1, MatrizMath m2) {
 		int a, f, i = 0;
 		double k;
@@ -25,7 +27,7 @@ public class GaussJordan {
 		while (!esIdentidad(m1) && (a = seguir(m1) != 0)) {
 			if (i == m1.getMat().length)
 				i = 0;
-			//for (int y = 0; y < m1.getMat().length; y++) {
+		
 				if (Math.abs(m1.getValue(i,i)) < m1.getErrTol())
 					if (verSiFilaCero(m1, i, m1.getErrTol()))
 						return 0;
@@ -37,7 +39,7 @@ public class GaussJordan {
 						}
 					}
 				else {
-					k = 1 / m1.getMat()[i][i];
+					k = 1 / m1.getValue(i,i);
 					multiplicarFila(m1, i, k);
 					multiplicarFila(m2, i, k);
 					for (int j = 0; j < m1.getMat().length; j++) {
