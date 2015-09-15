@@ -56,56 +56,56 @@ public class MatrizMath {
 		this.mat[f][c] = value;
 	}
 	
-	public boolean verSiFilaCero(MatrizMath m, int i, double tol){
-		for(int j=0; j<m.getMat().length; j++)
-			if(Math.abs(m.getValue(i, j))>tol)
+	public boolean verSiFilaCero(int i, double tol){
+		for(int j=0; j<this.getMat().length; j++)
+			if(Math.abs(this.getValue(i, j))>tol)
 				return false;
 		return true;				
 	}
 	
-	public boolean verSiColCero(MatrizMath m, int i, double tol){
-		for(int j=0; j<m.getMat().length; j++)
-			if(Math.abs(m.getValue(j, i))>tol)
+	public boolean verSiColCero(int i, double tol){
+		for(int j=0; j<this.getMat().length; j++)
+			if(Math.abs(this.getValue(j, i))>tol)
 				return false;
 		return true;		
 	}
-	public int buscarFila(MatrizMath m, int i, double tol){
-		for(int j=0; j < m.getMat().length; j++)
-			if(Math.abs(m.getValue(j, i))>tol)
+	public int buscarFila(int i, double tol){
+		for(int j=0; j < this.getMat().length; j++)
+			if(Math.abs(this.getValue(j, i))>tol)
 				return j;
 		return -1;
 	}
 	
-	public void sumarFilas(MatrizMath m, int i, int f){
-		for(int j=0; j< m.getMat().length; j++)
-			m.setValue(i, j, m.getValue(i, j)+m.getValue(f, j));
+	public void sumarFilas(int i, int f){
+		for(int j=0; j< this.getMat().length; j++)
+			this.setValue(i, j, this.getValue(i, j)+ this.getValue(f, j));
 	}
 	
-	public void multiplicarFila(MatrizMath m, int i, double k){
-		for(int j=0; j< m.getMat().length; j++)
-			m.setValue(i, j, m.getValue(i, j)*k);
+	public void multiplicarFila(int i, double k){
+		for(int j=0; j< this.getMat().length; j++)
+			this.setValue(i, j, this.getValue(i, j)*k);
 	}
 	
-	public void restarFilas(MatrizMath m, int i, int j, double tol){
+	public void restarFilas(int i, int j, double tol){
 		double k=1;
 		int n;
 		if(i>j){
-			if(Math.abs(k=m.getValue(j, i))>tol)
-				for(n=0; n<m.getMat().length; n++)
-					m.setValue(j, n, m.getValue(j, n)-(m.getValue(i, j)*k));
+			if(Math.abs(k = this.getValue(j, i))>tol)
+				for(n=0; n < this.getMat().length; n++)
+					this.setValue(j, n, this.getValue(j, n)-(this.getValue(i, j)*k));
 		}
 		else
-			for(n=0; n<m.getMat().length; n++)
-				m.setValue(j, n, m.getValue(j, n)-m.getValue(i, j));
+			for(n=0; n < this.getMat().length; n++)
+				this.setValue(j, n, this.getValue(j, n) - this.getValue(i, j));
 	}
 	
-	public boolean esIdentidad(MatrizMath m1) {
-		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()), aux;
+	public boolean esIdentidad() {
+		MatrizMath id = new MatrizMath(this.getDimF(), this.getDimC()), aux;
 
-		for (int i = 0; i < m1.getMat().length; i++)
+		for (int i = 0; i < this.getMat().length; i++)
 			id.setValue(i, i, 1);
-		aux = m1.restar(id);
-		if (aux.normaDos() < m1.getErrTol())
+		aux = this.restar(id);
+		if (aux.normaDos() < this.getErrTol())
 			return true;
 
 		return false;
