@@ -92,11 +92,11 @@ public class MatrizMath {
 		if(i>j){
 			if(Math.abs(k = this.getValue(j, i))>tol)
 				for(n=0; n < this.getMat().length; n++)
-					this.setValue(j, n, this.getValue(j, n)-(this.getValue(i, j)*k));
+					this.setValue(j, n, this.getValue(j, n)-(this.getValue(i, n)*k));
 		}
-		else
+		else if(i<j)
 			for(n=0; n < this.getMat().length; n++)
-				this.setValue(j, n, this.getValue(j, n) - this.getValue(i, j));
+				this.setValue(j, n, this.getValue(j, n) - this.getValue(i, n));
 	}
 	
 	public boolean esIdentidad() {

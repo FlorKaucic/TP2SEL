@@ -2,7 +2,7 @@ package sel;
 
 public class GaussJordan {
 	
-	public int seguir(MatrizMath m){
+	public static int seguir(MatrizMath m){
 		int i;
 		for(i=0; i<m.getMat().length; i++)
 			if(m.verSiFilaCero(i, m.getErrTol())==true || m.verSiColCero(i, m.getErrTol())==true)
@@ -12,14 +12,14 @@ public class GaussJordan {
 		
 	}
 	
-	public int gaussJordan(MatrizMath m1, MatrizMath m2) {
-		int a=1, f, i = 0;
+	public static int gaussJordan(MatrizMath m1, MatrizMath m2) {
+		int a=1, f, i = 0, j, z=0;
 		double k;
 
 		// cuando el pivot es 0, verificar toda la fila si es 0
 		// si la fila no es 0, buscar una fila que sumarle.
 
-		while (!m1.esIdentidad() && (a = seguir(m1)) != 0) {
+		while (!m1.esIdentidad() && (a = seguir(m1)) != 0 && z<10) {
 			if (i == m1.getMat().length)
 				i = 0;
 		
@@ -34,15 +34,22 @@ public class GaussJordan {
 						}
 					}
 				else {
-					k = 1 / m1.getValue(i,i);
-					m1.multiplicarFila(i, k);
-					m2.multiplicarFila(i, k);
-					for (int j = 0; j < m1.getMat().length; j++) {
+					for(j=i ; j < m1.getMat().length; j++){
+						k = 1 / m1.getValue(j,i);
+						m1.multiplicarFila(j, k);
+						m2.multiplicarFila(j, k);
+					}
+					System.out.println(m1);
+					for (j = 0; j < m1.getMat().length; j++) {
 						m1.restarFilas(i, j, m1.getErrTol());
 						m2.restarFilas(i, j, m1.getErrTol());
+						System.out.println(m1);
 					}
 				}
+
 			i++;
+			z++;
+			System.out.println(i);
 		}
 		return a;
 	}
