@@ -1,7 +1,5 @@
 package sel;
 
-import java.util.Vector;
-
 public class SEL {
 	
 	MatrizMath a;
@@ -17,8 +15,8 @@ public class SEL {
 		return true;
 	}
 
-	public void resolver(MatrizMath m, VectorMath v) {
-		
+	public void resolver() {
+		GaussJordan.gaussJordan(a, b);
 	}
 
 	public double calcularErrorSolucion(){
