@@ -13,11 +13,8 @@ public class GaussJordan {
 	}
 	
 	public static int gaussJordan(MatrizMath m1, VectorMath vec) {
-		int a=1, f, i = 0, j, z=0;
+		int a=1, f, i = 0, j;
 		double k;
-
-		// cuando el pivot es 0, verificar toda la fila si es 0
-		// si la fila no es 0, buscar una fila que sumarle.
 
 		while (!m1.esIdentidad() && (a = seguir(m1)) != 0) {
 			if (i == m1.getMat().length)
@@ -39,20 +36,12 @@ public class GaussJordan {
 						m1.multiplicarFila(j, k);
 						vec.setValue(j, vec.getValue(j)*k);
 					}
-					System.out.println(m1);
-					System.out.println(vec);
 					for (j = 0; j < m1.getMat().length; j++) {
 						m1.restarFilas(i, j, vec, m1.getErrTol());
-						//vec.setValue(j, vec.getValue(j) - vec.getValue(i));
-						
-						System.out.println(m1);
-						System.out.println(vec);
 					}
 				}
 
 			i++;
-			z++;
-			System.out.println(i);
 		}
 		return a;
 	}

@@ -16,7 +16,7 @@ public class GaussJordanTest {
 		m.setValue(0, 1, 4);
 		m.setValue(0, 2, 3);
 		m.setValue(1, 0, 5);
-		m.setValue(1, 1, 1);
+		m.setValue(1, 1, 0);
 		m.setValue(1, 2, 2);
 		m.setValue(2, 0, 3);
 		m.setValue(2, 1, 2);
@@ -39,10 +39,11 @@ public class GaussJordanTest {
 		
 		
 
-		System.out.println(GaussJordan.gaussJordan(m, v));
-		
-		System.out.println("Matriz: " + m);
-		System.out.println("Resultado: " + v);
-		
+		if(GaussJordan.gaussJordan(m, v)!=0){
+			System.out.println("Matriz: " + m);
+			System.out.println("Resultado: " + v);
+		}
+		else
+			System.out.println("El sistema no tiene una única solución");
 	}
 }
