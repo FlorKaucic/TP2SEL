@@ -86,17 +86,21 @@ public class MatrizMath {
 			this.setValue(i, j, this.getValue(i, j)*k);
 	}
 	
-	public void restarFilas(int i, int j, double tol){
+	public void restarFilas(int i, int j, VectorMath vec, double tol){
 		double k=1;
 		int n;
 		if(i>j){
-			if(Math.abs(k = this.getValue(j, i))>tol)
+			if(Math.abs(k = this.getValue(j, i))>tol){
 				for(n=0; n < this.getMat().length; n++)
 					this.setValue(j, n, this.getValue(j, n)-(this.getValue(i, n)*k));
+				vec.setValue(j, vec.getValue(j) - (vec.getValue(i)*k));
+			}
 		}
-		else if(i<j)
+		else if(i<j){
 			for(n=0; n < this.getMat().length; n++)
 				this.setValue(j, n, this.getValue(j, n) - this.getValue(i, n));
+			vec.setValue(j, vec.getValue(j) - vec.getValue(i));
+		}
 	}
 	
 	public boolean esIdentidad() {
