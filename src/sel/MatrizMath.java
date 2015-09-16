@@ -2,7 +2,7 @@ package sel;
 
 public class MatrizMath {
 	
-	private static final double errTol = 1.0E-200;
+	private static final double errTol = 1.0E-300;
 	
 	private double[][] mat = null;
 	private int dimF = 0;

@@ -23,8 +23,8 @@ public class GaussJordan {
 				if (m1.verSiFilaCero(i, m1.getErrTol()))
 					return 0;
 				else {
-<<<<<<< HEAD
-					for(j=i ; j < m1.getMat().length; j++){
+
+					/*for(j=i ; j < m1.getMat().length; j++){
 						k = 1 / m1.getValue(j,i);
 						m1.multiplicarFila(j, k);
 						vec.setValue(j, vec.getValue(j)*k);
@@ -35,26 +35,32 @@ public class GaussJordan {
 						m1.restarFilas(i, j, vec, m1.getErrTol());
 						System.out.println(m1);
 						System.out.println(vec);
-=======
+					}*/
 					f = m1.buscarFila(i, m1.getErrTol());
 					if (f >= 0) {
 						m1.sumarFilas(i, f);
 						vec.setValue(i, vec.getValue(i) + vec.getValue(f));
->>>>>>> branch 'master' of https://github.com/FlorKaucic/TP2SEL.git
 					}
+					System.out.println(m1);
+					System.out.println(vec);
 				}
 			else {
 				for (j = i; j < m1.getMat().length; j++) {
 					k = 1 / m1.getValue(j, i);
 					m1.multiplicarFila(j, k);
 					vec.setValue(j, vec.getValue(j) * k);
+					System.out.println(m1);
+					System.out.println(vec);
 				}
 				for (j = 0; j < m1.getMat().length; j++) {
 					m1.restarFilas(i, j, vec, m1.getErrTol());
+					System.out.println(m1);
+					System.out.println(vec);
 				}
-			}
+				}
 
 			i++;
+			System.out.println(i);
 		}
 		return a;
 	}

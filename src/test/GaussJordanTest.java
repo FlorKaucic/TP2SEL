@@ -12,11 +12,11 @@ public class GaussJordanTest {
 		MatrizMath m = new MatrizMath(2,2);
 		VectorMath v = new VectorMath(2);
 
-		m.setValue(0, 0, 1.23456785E16);
-		m.setValue(0, 1, 3.56789123E-14);
+		m.setValue(0, 0, 1.23456785E20);
+		m.setValue(0, 1, 3.56789123E-19);
 		//m.setValue(0, 2, 3);
-		m.setValue(1, 0, 1.23456795E16);
-		m.setValue(1, 1, 3.56789125E-14);
+		m.setValue(1, 0, 1.23456795E20);
+		m.setValue(1, 1, 3.56789125E-19);
 		//m.setValue(1, 2, 2);
 		//m.setValue(2, 0, 3);
 		//m.setValue(2, 1, 2);

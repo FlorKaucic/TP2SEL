@@ -2,12 +2,12 @@ package sel;
 
 public class SEL {
 	
-	MatrizMath a;
-	VectorMath b;
+	MatrizMath matriz1;
+	VectorMath vect1;
 
 	public SEL(MatrizMath a, VectorMath b) {
-		this.a = a;
-		this.b = b;
+		this.matriz1 = a;
+		this.vect1 = b;
 	}
 	
 	public static boolean test(){
@@ -16,7 +16,7 @@ public class SEL {
 	}
 
 	public void resolver() {
-		GaussJordan.gaussJordan(a, b);
+		GaussJordan.gaussJordan(matriz1, vect1);
 	}
 
 	public double calcularErrorSolucion(){
@@ -25,7 +25,7 @@ public class SEL {
 	}
 	
 	public void mostrarResultado() {
-		System.out.println("Resultado: " + b);
+		System.out.println("Resultado: " + vect1);
 	}
 
 }
