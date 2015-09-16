@@ -15,13 +15,13 @@ public class SEL {
 	public boolean test() { 
 		//Cambiar return
 		// AX = B
-		VectorMath vectorObtenido = this.matriz1.multiplicar(vect1);
-		System.out.println("Obtenido:"+vectorObtenido);
-		return true;
+		VectorMath vectorObtenido = this.vect1.multiplicar(this.matriz1);
+		
+		return vectorObtenido.equals(this.vect2);
 	}
 
 	public void resolver() {
-		GaussJordan.gaussJordan(matriz1, vect1);
+		GaussJordan.gaussJordan(matriz1.clone(), vect1);
 	}
 
 	public double calcularErrorSolucion() {
