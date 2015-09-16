@@ -9,36 +9,25 @@ import sel.VectorMath;
 public class GaussJordanTest {
 
 	public static void main(String[] args) {
-		MatrizMath m = new MatrizMath(3,3);
-		VectorMath v = new VectorMath(3);
+		MatrizMath m = new MatrizMath(2,2);
+		VectorMath v = new VectorMath(2);
 
-		m.setValue(0, 0, 2);
-		m.setValue(0, 1, 4);
-		m.setValue(0, 2, 3);
-		m.setValue(1, 0, 5);
-		m.setValue(1, 1, 0);
-		m.setValue(1, 2, 2);
-		m.setValue(2, 0, 3);
-		m.setValue(2, 1, 2);
-		m.setValue(2, 2, 1);
-		v.setValue(0, 1);
-		v.setValue(1, 2);
-		v.setValue(2, 3);
-		/*
-		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 3; j++) {
-				if (i == j)
-					n.setValue(i, j, 1);
-				else
-					n.setValue(i, j, 0);
-			}
-	*/
+		m.setValue(0, 0, 1.23456785E16);
+		m.setValue(0, 1, 3.56789123E-14);
+		//m.setValue(0, 2, 3);
+		m.setValue(1, 0, 1.23456795E16);
+		m.setValue(1, 1, 3.56789125E-14);
+		//m.setValue(1, 2, 2);
+		//m.setValue(2, 0, 3);
+		//m.setValue(2, 1, 2);
+		//m.setValue(2, 2, 1);
+		v.setValue(0, 3);
+		v.setValue(1, 3.0000000000001);
+		//v.setValue(2, 3);
+
 		System.out.println("Matriz: " + m);
-		//System.out.println("Matriz identidad: " + n);
 		System.out.println("Vector: " + v);
 		
-		
-
 		if(GaussJordan.gaussJordan(m, v)!=0){
 			System.out.println("Matriz: " + m);
 			System.out.println("Resultado: " + v);

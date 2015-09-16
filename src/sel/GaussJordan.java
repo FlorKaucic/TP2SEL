@@ -35,9 +35,13 @@ public class GaussJordan {
 						k = 1 / m1.getValue(j,i);
 						m1.multiplicarFila(j, k);
 						vec.setValue(j, vec.getValue(j)*k);
+					System.out.println(m1);
+					System.out.println(vec);
 					}
 					for (j = 0; j < m1.getMat().length; j++) {
 						m1.restarFilas(i, j, vec, m1.getErrTol());
+						System.out.println(m1);
+						System.out.println(vec);
 					}
 				}
 
