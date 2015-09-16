@@ -21,7 +21,7 @@ public class Main {
 				System.out.println();
 				
 				System.out.println("Matriz:"+fw.getMatriz()+"\nVector:"+fw.getVector());
-				// Inicio del calendar
+				// Inicio de medicion
 				long time_1 = System.currentTimeMillis();
 				
 				//SEL
@@ -29,8 +29,7 @@ public class Main {
 				sel.resolver();
 				sel.mostrarResultado();
 				
-				//Fin del calendar
-				Calendar tFin = new GregorianCalendar();
+				//Fin de medicion
 				long time_2 = System.currentTimeMillis();
 				long diff = time_2 - time_1;
 				System.out.println("Tiempo de resolucion para el archivo "+name+": " +diff + " ms");
