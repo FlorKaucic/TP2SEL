@@ -30,8 +30,8 @@ public class Main {
 				SEL sel = new SEL(fw.getMatriz(), fw.getVector());
 				sel.resolver();
 				sel.mostrarResultado();
-				sel.test();
-				
+				System.out.println("Resultado del test: "+(sel.test()?"Correcto":"Incorrecto"));
+				System.out.println("Error: "+sel.calcularErrorSolucion());
 				//Fin del calendar //Con long da 0
 //				Calendar tFin = new GregorianCalendar();
 //				long diff = tFin.getTimeInMillis() - tIni.getTimeInMillis();

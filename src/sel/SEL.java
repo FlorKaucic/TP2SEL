@@ -12,11 +12,9 @@ public class SEL {
 		this.vect2 = vect1.clone();
 	}
 
-	public boolean test() { 
-		//Cambiar return
+	public boolean test() {
 		// AX = B
 		VectorMath vectorObtenido = this.vect1.multiplicar(this.matriz1);
-		
 		return vectorObtenido.equals(this.vect2);
 	}
 
@@ -25,8 +23,8 @@ public class SEL {
 	}
 
 	public double calcularErrorSolucion() {
-		// Cambiar return
-		return 1;
+		VectorMath vectorObtenido = this.vect1.multiplicar(this.matriz1);
+		return vectorObtenido.restar(this.vect2).normaDos();
 	}
 
 	public void mostrarResultado() {

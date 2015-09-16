@@ -117,7 +117,7 @@ public class VectorMath {
 	public boolean equals(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		return obj.normaDos() < errTol;
+		return this.restar(obj).normaDos() < errTol;
 	}
 
 	public VectorMath clone() {
