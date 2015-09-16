@@ -21,7 +21,7 @@ public class Main {
 				String path = new String("Entrada/"+listOfFiles[i].getName());
 				fw.leerArchivo(path);
 				SEL sel = new SEL(fw.getMatriz(), fw.getVector());
-				sel.resolver();
+				//sel.resolver();
 				sel.mostrarResultado();
 			}
 		}

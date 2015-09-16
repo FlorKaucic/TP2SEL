@@ -1,102 +1,48 @@
 package sel;
 
-
 public class GaussJordan {
 	
-	//Tiene sysos por todos lados para ver paso a paso que hacía para detectar los errores
-	public static boolean esIdentidad(MatrizMath m1)
-	{
-		MatrizMath id = new MatrizMath(m1.getDimF(), m1.getDimC()),
-				   aux;
+	public static int seguir(MatrizMath m){
+		int i;
+		for(i=0; i<m.getMat().length; i++)
+			if(m.verSiFilaCero(i, m.getErrTol())==true || m.verSiColCero(i, m.getErrTol())==true)
+				return 0;
+			
+		return 1;
 		
-		for(int i=0; i<m1.getMat().length; i++)
-			id.setValue(i, i, 1);
-		aux = m1.restar(id);
-		if(aux.normaDos() < m1.getErrTol())
-			return true;
-		
-		return false;
 	}
-	public static int gaussJordan(MatrizMath m1, MatrizMath m2){
-		int i=0, y=0, j=0, a=0, z=0;
+	
+	public static int gaussJordan(MatrizMath m1, VectorMath vec) {
+		int a=1, f, i = 0, j;
 		double k;
-		while(!esIdentidad(m1) && z<10){
-			System.out.println(i);
-			if(i==5)
-				i=0;
-			
-			for(y=0;y<m1.getDimF();y++){
-				if(m1.getMat()[y][i]!=0 && y>=i){
-				
-					k = 1/m1.getMat()[y][i];
-					
-				for(j=0;j<m1.getDimF();j++)
-				{
-					
-					m1.getMat()[y][j]*=k;
-					m2.getMat()[y][j]*=k;
-					
-					for(int l=0;l<m1.getDimF();l++)
-					{	for(int h=0; h<5; h++)
-							{	System.out.print(m1.getMat()[l][h] + "\t");
-								
-							}
-						System.out.println("");
-					}
-					System.out.println("---------");
-				}
-				}
-			}
-			for(y=0; y<m1.getDimF(); y++)
-			{
-				if(i!=y){
-					if(y<i)
-						k = m1.getMat()[y][i];
-					else
-						k=1;
-					for(j=0;j<5;j++){
-					
-					
-						m1.getMat()[y][j]-=m1.getMat()[i][j]*k;
-						m2.getMat()[y][j]-=m2.getMat()[i][j]*k;
-						
-						for(int l=0;l<m1.getDimF();l++)
-						{	for(int h=0; h<5; h++)
-								{	System.out.print(m1.getMat()[l][h]+"\t");
-									
-								}
-							System.out.println("");
+
+		while (!m1.esIdentidad() && (a = seguir(m1)) != 0) {
+			if (i == m1.getMat().length)
+				i = 0;
+		
+				if (Math.abs(m1.getValue(i,i)) < m1.getErrTol())
+					if (m1.verSiFilaCero(i, m1.getErrTol()))
+						return 0;
+					else {
+						f = m1.buscarFila(i, m1.getErrTol());
+						if(f>=0){
+							m1.sumarFilas(i, f);
+							vec.setValue(i, vec.getValue(i) + vec.getValue(f));
 						}
-						System.out.println("---------");
 					}
+				else {
+					for(j=i ; j < m1.getMat().length; j++){
+						k = 1 / m1.getValue(j,i);
+						m1.multiplicarFila(j, k);
+						vec.setValue(j, vec.getValue(j)*k);
 					}
-			}
-			System.out.println("Prueba"+i +","+z);
-			z++;
-			for(y=0;y<m1.getDimF();y++)
-			{	for(j=0; j<5; j++)
-					{	System.out.print(m1.getMat()[y][j]+"\t");
-						
+					for (j = 0; j < m1.getMat().length; j++) {
+						m1.restarFilas(i, j, vec, m1.getErrTol());
 					}
-				System.out.println("");
-			}
-			System.out.println("---------");
-			
-			
+				}
+
 			i++;
-			
-			
-			
 		}
-		a=1;
 		return a;
-
-	}	
-	
-	
-	
-
 	}
-
-
-
+}
