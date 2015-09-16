@@ -13,7 +13,7 @@ public class Main {
 		int cant = listOfFiles.length;
 		FileWorker fw = new FileWorker();
 		
-		for(int i=2; i<cant; i++){
+		for(int i=0; i<cant; i++){
 			if (listOfFiles[i].isFile()) {
 				String name = new String(listOfFiles[i].getName());
 				fw.leerArchivo("Entrada/"+name);
@@ -30,6 +30,7 @@ public class Main {
 				SEL sel = new SEL(fw.getMatriz(), fw.getVector());
 				sel.resolver();
 				sel.mostrarResultado();
+				sel.test();
 				
 				//Fin del calendar //Con long da 0
 //				Calendar tFin = new GregorianCalendar();

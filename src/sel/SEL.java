@@ -3,8 +3,8 @@ package sel;
 public class SEL {
 
 	MatrizMath matriz1; // A
-	VectorMath vect1; // B
-	VectorMath vect2; // X 
+	VectorMath vect1; // X
+	VectorMath vect2; // B 
 
 	public SEL(MatrizMath a, VectorMath b) {
 		this.matriz1 = a;
@@ -12,10 +12,11 @@ public class SEL {
 		this.vect2 = vect1.clone();
 	}
 
-	public static boolean test() {
+	public boolean test() { 
 		//Cambiar return
 		// AX = B
-		
+		VectorMath vectorObtenido = this.matriz1.multiplicar(vect1);
+		System.out.println("Obtenido:"+vectorObtenido);
 		return true;
 	}
 
