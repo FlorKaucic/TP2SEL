@@ -56,48 +56,48 @@ public class MatrizMath {
 		this.mat[f][c] = value;
 	}
 	
-	public boolean verSiFilaCero(int i, double tol){
-		for(int j=0; j<this.getMat().length; j++)
-			if(Math.abs(this.getValue(i, j))>tol)
+	public boolean verSiFilaCero(int i){
+		for(int j=0; j<this.dimC; j++)
+			if(Math.abs(this.getValue(i, j))>errTol)
 				return false;
 		return true;				
 	}
 	
-	public boolean verSiColCero(int i, double tol){
-		for(int j=0; j<this.getMat().length; j++)
-			if(Math.abs(this.getValue(j, i))>tol)
+	public boolean verSiColCero(int i){
+		for(int j=0; j<this.dimF; j++)
+			if(Math.abs(this.getValue(j, i))>errTol)
 				return false;
 		return true;		
 	}
-	public int buscarFila(int i, double tol){
-		for(int j=0; j < this.getMat().length; j++)
-			if(Math.abs(this.getValue(j, i))>tol)
+	public int buscarFila(int i){
+		for(int j=0; j < this.dimF; j++)
+			if(Math.abs(this.getValue(j, i))>errTol)
 				return j;
 		return -1;
 	}
 	
 	public void sumarFilas(int i, int f){
-		for(int j=0; j< this.getMat().length; j++)
+		for(int j=0; j< this.dimC; j++)
 			this.setValue(i, j, this.getValue(i, j)+ this.getValue(f, j));
 	}
 	
 	public void multiplicarFila(int i, double k){
-		for(int j=0; j< this.getMat().length; j++)
+		for(int j=0; j< this.dimC; j++)
 			this.setValue(i, j, this.getValue(i, j)*k);
 	}
 	
-	public void restarFilas(int i, int j, VectorMath vec, double tol){
+	public void restarFilas(int i, int j, VectorMath vec){
 		double k=1;
 		int n;
 		if(i>j){
-			if(Math.abs(k = this.getValue(j, i))>tol){
-				for(n=0; n < this.getMat().length; n++)
+			if(Math.abs(k = this.getValue(j, i))>errTol){
+				for(n=0; n < this.dimC; n++)
 					this.setValue(j, n, this.getValue(j, n)-(this.getValue(i, n)*k));
 				vec.setValue(j, vec.getValue(j) - (vec.getValue(i)*k));
 			}
 		}
 		else if(i<j){
-			for(n=0; n < this.getMat().length; n++)
+			for(n=0; n < this.dimC; n++)
 				this.setValue(j, n, this.getValue(j, n) - this.getValue(i, n));
 			vec.setValue(j, vec.getValue(j) - vec.getValue(i));
 		}
@@ -106,7 +106,7 @@ public class MatrizMath {
 	public boolean esIdentidad() {
 		MatrizMath id = new MatrizMath(this.getDimF(), this.getDimC()), aux;
 
-		for (int i = 0; i < this.getMat().length; i++)
+		for (int i = 0; i < this.dimC; i++)
 			id.setValue(i, i, 1);
 		aux = this.restar(id);
 		if (aux.normaDos() < this.getErrTol())

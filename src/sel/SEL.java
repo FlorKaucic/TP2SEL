@@ -1,7 +1,7 @@
 package sel;
 
 public class SEL {
-	
+
 	MatrizMath matriz1;
 	VectorMath vect1;
 
@@ -9,8 +9,8 @@ public class SEL {
 		this.matriz1 = a;
 		this.vect1 = b;
 	}
-	
-	public static boolean test(){
+
+	public static boolean test() {
 		// Cambiar return
 		return true;
 	}
@@ -19,11 +19,11 @@ public class SEL {
 		GaussJordan.gaussJordan(matriz1, vect1);
 	}
 
-	public double calcularErrorSolucion(){
+	public double calcularErrorSolucion() {
 		// Cambiar return
 		return 1;
 	}
-	
+
 	public void mostrarResultado() {
 		System.out.println("Resultado: " + vect1);
 	}

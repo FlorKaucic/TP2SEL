@@ -4,8 +4,8 @@ public class GaussJordan {
 
 	public static int seguir(MatrizMath m) {
 		int i;
-		for (i = 0; i < m.getMat().length; i++)
-			if (m.verSiFilaCero(i, m.getErrTol()) == true || m.verSiColCero(i, m.getErrTol()) == true)
+		for (i = 0; i < m.getDimF(); i++)
+			if (m.verSiFilaCero(i) == true || m.verSiColCero(i) == true)
 				return 0;
 
 		return 1;
@@ -16,51 +16,37 @@ public class GaussJordan {
 		double k;
 
 		while (!m1.esIdentidad() && (a = seguir(m1)) != 0) {
-			if (i == m1.getMat().length)
+			if (i == m1.getDimF())
 				i = 0;
 
 			if (Math.abs(m1.getValue(i, i)) < m1.getErrTol())
-				if (m1.verSiFilaCero(i, m1.getErrTol()))
+				if (m1.verSiFilaCero(i))
 					return 0;
 				else {
-
-					/*for(j=i ; j < m1.getMat().length; j++){
-						k = 1 / m1.getValue(j,i);
-						m1.multiplicarFila(j, k);
-						vec.setValue(j, vec.getValue(j)*k);
-					System.out.println(m1);
-					System.out.println(vec);
-					}
-					for (j = 0; j < m1.getMat().length; j++) {
-						m1.restarFilas(i, j, vec, m1.getErrTol());
-						System.out.println(m1);
-						System.out.println(vec);
-					}*/
-					f = m1.buscarFila(i, m1.getErrTol());
+					f = m1.buscarFila(i);
 					if (f >= 0) {
 						m1.sumarFilas(i, f);
 						vec.setValue(i, vec.getValue(i) + vec.getValue(f));
 					}
-					System.out.println(m1);
-					System.out.println(vec);
+					//System.out.println(m1);
+					//System.out.println(vec);
 				}
 			else {
-				for (j = i; j < m1.getMat().length; j++) {
+				for (j = i; j < m1.getDimF(); j++) {
 					k = 1 / m1.getValue(j, i);
 					m1.multiplicarFila(j, k);
 					vec.setValue(j, vec.getValue(j) * k);
-					System.out.println(m1);
-					System.out.println(vec);
+					//System.out.println(m1);
+					//System.out.println(vec);
 				}
-				for (j = 0; j < m1.getMat().length; j++) {
-					m1.restarFilas(i, j, vec, m1.getErrTol());
-					System.out.println(m1);
-					System.out.println(vec);
+				for (j = 0; j < m1.getDimF(); j++) {
+					m1.restarFilas(i, j, vec);
+					//System.out.println(m1);
+					//System.out.println(vec);
 				}
-				}
-
+			}
 			i++;
-			System.out.println(i);
+			//System.out.println(i);
 		}
 		return a;
 	}

@@ -14,9 +14,9 @@ public class VectorMath {
 		this.dim = 0;
 		this.vec = null;
 	}
-	
+
 	//ELIMINAR
-	public VectorMath(double[] v){
+	public VectorMath(double[] v) {
 		// Constructor para hardcodear vector
 		this.dim = v.length;
 		this.vec = new double[this.dim];
@@ -24,29 +24,29 @@ public class VectorMath {
 			this.vec[i] = v[i];
 		}
 	}
-	
-	public int getDim(){
+
+	public int getDim() {
 		return this.dim;
 	}
 
-	public double[] getVec(){
+	public double[] getVec() {
 		return this.vec;
 	}
-	
-	public double getValue(int i){
+
+	public double getValue(int i) {
 		return this.vec[i];
 	}
-	
-	public void setValue(int i, double value){
+
+	public void setValue(int i, double value) {
 		this.vec[i] = value;
 	}
-	
+
 	public VectorMath sumar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
 
 		VectorMath aux = new VectorMath(this.dim);
-		
+
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] + obj.vec[i];
 		return aux;
@@ -55,9 +55,9 @@ public class VectorMath {
 	public VectorMath restar(VectorMath obj) throws DistDimException {
 		if (this.dim != obj.dim)
 			throw new DistDimException(" Distinta Dimension ");
-		
+
 		VectorMath aux = new VectorMath(this.dim);
-		
+
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] += this.vec[i] - obj.vec[i];
 		return aux;
@@ -79,23 +79,21 @@ public class VectorMath {
 		VectorMath aux = new VectorMath(obj.getDimC());
 		for (int j = 0; j < obj.getDimC(); j++)
 			for (int i = 0; i < this.dim; i++)
-				aux.vec[j] += this.vec[i] * obj.getValue(i,j);
+				aux.vec[j] += this.vec[i] * obj.getValue(i, j);
 		return aux;
 	}
 
 	public VectorMath multiplicar(double real) {
-		
 		VectorMath aux = new VectorMath(this.dim);
 		for (int i = 0; i < this.dim; i++)
 			aux.vec[i] = this.vec[i] * real;
-
 		return aux;
 	}
-	public double normaUno()
-	{
-		double norma1=0;
-		for(int i=0;i<this.dim;i++)
-			norma1+=(this.vec[i]>=0?this.vec[i]:-this.vec[i]);
+
+	public double normaUno() {
+		double norma1 = 0;
+		for (int i = 0; i < this.dim; i++)
+			norma1 += (this.vec[i] >= 0 ? this.vec[i] : -this.vec[i]);
 		return norma1;
 	}
 

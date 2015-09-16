@@ -5,15 +5,15 @@ import java.io.*;
 public class FileWorker {
 	MatrizMath mat;
 	VectorMath vec;
-	
-	public MatrizMath getMatriz(){
+
+	public MatrizMath getMatriz() {
 		return mat;
 	}
-	
-	public VectorMath getVector(){
+
+	public VectorMath getVector() {
 		return vec;
 	}
-	
+
 	public void leerArchivo(String ruta) {
 		File archivo = null;
 		FileReader fr = null;
@@ -29,18 +29,18 @@ public class FileWorker {
 			double[][] m = new double[tam][tam];
 			double[] v = new double[tam];
 			int c = 0;
-			while(c<(tam*tam) && (linea = br.readLine()) != null) {
+			while (c < (tam * tam) && (linea = br.readLine()) != null) {
 				String[] data = linea.split(" ");
 				m[Integer.parseInt(data[0])][Integer.parseInt(data[1])] = Double.parseDouble(data[2]);
 				c++;
 			}
 			mat = new MatrizMath(m);
-			for(int i = 0; i < tam; i++) {
+			for (int i = 0; i < tam; i++) {
 				linea = br.readLine();
 				v[i] = Double.parseDouble(linea);
 			}
 			vec = new VectorMath(v);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
