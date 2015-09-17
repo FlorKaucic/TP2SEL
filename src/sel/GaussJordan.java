@@ -39,6 +39,13 @@ public class GaussJordan {
 						m1.multiplicarFila(j, k);
 						vec.setValue(j, vec.getValue(j) * k);
 					}
+
+					System.out.println("j: "+j);
+					System.out.println("m: "+m1.getValue(j, i));
+					System.out.println("k: "+(1/m1.getValue(j, i)));
+					k = 1 / m1.getValue(j, i);
+					m1.multiplicarFila(j, k);
+					vec.setValue(j, vec.getValue(j) * k);
 					System.out.println("\nMatriz2:"+m1);
 					System.out.println("\nVec2:"+vec);
 				}
@@ -49,7 +56,7 @@ public class GaussJordan {
 				}
 			}
 			i++;
-			System.out.println(i);
+			System.out.println("i: "+i);
 		}
 		return a;
 	}
