@@ -1,6 +1,7 @@
 package generador;
 
 import java.util.Random;
+
 import java.io.*;
 
 public class Generador {
@@ -15,7 +16,17 @@ public class Generador {
 		int i, j;
 
 		try {
-			fw = new FileWriter("Entrada/05_CasoN"+cant+".in");
+			File folder = new File("Entrada");
+			File[] listOfFiles = folder.listFiles();
+			int max = 0, nue;			
+			for(int k=0; k<listOfFiles.length; k++){
+				if (listOfFiles[k].isFile()) {
+					if((nue=Integer.parseInt(listOfFiles[k].getName().substring(0,2)))>max)
+						max = nue;
+				}
+			}
+		
+			fw = new FileWriter("Entrada/"+(max>=10?max:"0"+max)+"_CasoN"+cant+".in");
 			pw = new PrintWriter(fw);
 			pw.println(cant);
 

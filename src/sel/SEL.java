@@ -5,11 +5,17 @@ public class SEL {
 	MatrizMath matriz1; // A
 	VectorMath vect1; // X
 	VectorMath vect2; // B 
+	// A * X = B
+	// matriz1 * vect1 = vect2
 
+	public SEL() {
+		this.matriz1 = new MatrizMath();
+		this.vect1 = new VectorMath();
+	}
+	
 	public SEL(MatrizMath a, VectorMath b) {
 		this.matriz1 = a;
-		this.vect1 = b;
-		this.vect2 = vect1.clone();
+		this.vect2 = b;
 	}
 
 	public boolean test() {
@@ -19,8 +25,7 @@ public class SEL {
 	}
 
 	public void resolver() {
-		//GaussJordan.gaussJordan(matriz1.clone(), vect1);
-		vect1 = new VectorMath(GaussJordan.gauss(matriz1.clone(), vect2.clone()));
+		vect1 = GaussJordan.gauss(matriz1.clone(), vect2.clone());
 	}
 
 	public double calcularErrorSolucion() {
@@ -34,5 +39,13 @@ public class SEL {
 	
 	public VectorMath getResultado(){
 		return vect1;
+	}
+	
+	public MatrizMath getMatriz(){
+		return this.matriz1;
+	}
+	
+	public VectorMath getVector(){
+		return this.vect2;
 	}
 }

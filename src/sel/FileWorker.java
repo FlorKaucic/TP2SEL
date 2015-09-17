@@ -3,18 +3,8 @@ package sel;
 import java.io.*;
 
 public class FileWorker {
-	MatrizMath mat;
-	VectorMath vec;
-
-	public MatrizMath getMatriz() {
-		return mat;
-	}
-
-	public VectorMath getVector() {
-		return vec;
-	}
-
-	public void leerArchivo(String ruta) {
+	
+	public void leerArchivo(MatrizMath mat, VectorMath vec, String ruta) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;

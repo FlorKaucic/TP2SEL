@@ -19,18 +19,20 @@ public class Main {
 		for(int i=0; i<cant; i++){
 			if (listOfFiles[i].isFile()) {
 				String name = new String(listOfFiles[i].getName());
-				fw.leerArchivo("Entrada/"+name);
 				
-				System.out.println();
+				SEL sel = new SEL();
+				fw.leerArchivo(sel.getMatriz(),sel.getVector(),"Entrada/"+name);
+				System.out.println("Matriz:"+sel.getMatriz()+"\nVector:"+sel.getVector());
+				System.out.println("Llego a esto");
+				
+				
+				System.out.println("\n"+name);
 
-				System.out.println("Matriz:"+fw.getMatriz()+"\nVector:"+fw.getVector());
 				
 				// Inicio del calendar //Con long da 0
 //				Calendar tIni = new GregorianCalendar();
 				long tIni = System.currentTimeMillis();
 				
-				//SEL
-				SEL sel = new SEL(fw.getMatriz(), fw.getVector());
 				sel.resolver();
 				sel.mostrarResultado();
 				System.out.println("Resultado del test: "+(sel.test()?"Correcto":"Incorrecto"));
