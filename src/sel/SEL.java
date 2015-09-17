@@ -30,4 +30,8 @@ public class SEL {
 	public void mostrarResultado() {
 		System.out.println("Resultado: " + vect1);
 	}
+	
+	public VectorMath getResultado(){
+		return vect1;
+	}
 }

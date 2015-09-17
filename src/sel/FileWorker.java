@@ -52,7 +52,7 @@ public class FileWorker {
 		}
 	}
 
-	public boolean escribirArchivo(VectorMath obj, String ruta) {
+	public boolean escribirArchivo(VectorMath obj, double error, String ruta) {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 
@@ -62,7 +62,8 @@ public class FileWorker {
 			pw.println(obj.dim);
 			for (int i = 0; i < obj.dim; i++)
 				pw.println(obj.vec[i]);
-
+			pw.println();
+			pw.println(error);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
