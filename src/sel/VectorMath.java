@@ -77,9 +77,9 @@ public class VectorMath {
 		if (this.dim != obj.getDimF())
 			throw new DistDimException(" Distinta Dimension ");
 		VectorMath aux = new VectorMath(obj.getDimC());
-		for (int j = 0; j < obj.getDimC(); j++)
-			for (int i = 0; i < this.dim; i++)
-				aux.vec[j] += this.vec[i] * obj.getValue(i, j);
+		for (int i = 0; i < obj.getDimC(); i++)
+			for (int j = 0; j < this.dim; j++)
+				aux.vec[i] += this.vec[j] * obj.getValue(i, j);
 		return aux;
 	}
 
