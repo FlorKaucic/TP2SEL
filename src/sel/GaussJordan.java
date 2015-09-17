@@ -27,15 +27,18 @@ public class GaussJordan {
 					if (f >= 0) {
 						m1.sumarFilas(i, f);
 						vec.setValue(i, vec.getValue(i) + vec.getValue(f));
+						i--;
 					}
 					System.out.println("\nMatriz1:"+m1);
 					System.out.println("\nVec1:"+vec);
 				}
 			else {
 				for (j = i; j < m1.getDimF(); j++) {
-					k = 1 / m1.getValue(j, i);
-					m1.multiplicarFila(j, k);
-					vec.setValue(j, vec.getValue(j) * k);
+					if(m1.getValue(j, i)!=0){
+						k = 1 / m1.getValue(j, i);
+						m1.multiplicarFila(j, k);
+						vec.setValue(j, vec.getValue(j) * k);
+					}
 					System.out.println("\nMatriz2:"+m1);
 					System.out.println("\nVec2:"+vec);
 				}
