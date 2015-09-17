@@ -11,7 +11,7 @@ public class Generador {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 		double desvio = 25;
-		int cant = 1000;
+		int cant = 5000;
 		Random randomDouble = new Random();
 		int i, j;
 
@@ -25,7 +25,7 @@ public class Generador {
 						max = nue;
 				}
 			}
-		
+			max++;
 			fw = new FileWriter("Entrada/"+(max>=10?max:"0"+max)+"_CasoN"+cant+".in");
 			pw = new PrintWriter(fw);
 			pw.println(cant);

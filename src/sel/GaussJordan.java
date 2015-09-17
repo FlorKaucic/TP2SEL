@@ -5,7 +5,6 @@ public class GaussJordan {
 	    int n = mat.getDimC();
 	    // i va a determinar la posicion de la diagonal principal a partir de la cual evaluo
 	    for (int i=0; i<n; i++) {
-	    	System.out.println(i);
 	        // Encontrar el valor mas grande en la columna i, a partir de la fila i
 	    	// Establezco que el primer valor es el mas grande
 	        double valorMax = Math.abs(mat.getValue(i, i));

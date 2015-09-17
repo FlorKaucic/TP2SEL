@@ -8,16 +8,11 @@ public class SEL {
 	// A * X = B
 	// matriz1 * vect1 = vect2
 
-	public SEL() {
-		this.matriz1 = new MatrizMath();
-		this.vect1 = new VectorMath();
+	public SEL(int tam) {
+		this.matriz1 = new MatrizMath(tam,tam);
+		this.vect2 = new VectorMath(tam);
 	}
 	
-	public SEL(MatrizMath a, VectorMath b) {
-		this.matriz1 = a;
-		this.vect2 = b;
-	}
-
 	public boolean test() {
 		// AX = B
 		VectorMath vectorObtenido = this.vect1.multiplicar(this.matriz1);
@@ -34,7 +29,7 @@ public class SEL {
 	}
 
 	public void mostrarResultado() {
-		System.out.println("Resultado: " + vect1);
+		System.out.println("Vector resultado: " + vect1);
 	}
 	
 	public VectorMath getResultado(){

@@ -4,10 +4,11 @@ import java.io.*;
 
 public class FileWorker {
 	
-	public void leerArchivo(MatrizMath mat, VectorMath vec, String ruta) {
+	public SEL leerArchivo(String ruta) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
+		SEL sel = null;
 		try {
 			String linea;
 			archivo = new File(ruta);
@@ -16,20 +17,19 @@ public class FileWorker {
 			int tam = 0;
 			if ((linea = br.readLine()) != null)
 				tam = Integer.parseInt(linea);
-			double[][] m = new double[tam][tam];
-			double[] v = new double[tam];
+			sel = new SEL(tam);
 			int c = 0;
 			while (c < (tam * tam) && (linea = br.readLine()) != null) {
 				String[] data = linea.split(" ");
-				m[Integer.parseInt(data[0])][Integer.parseInt(data[1])] = Double.parseDouble(data[2]);
+				sel.getMatriz().setValue(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Double.parseDouble(data[2]));
 				c++;
 			}
-			mat = new MatrizMath(m);
+			
 			for (int i = 0; i < tam; i++) {
 				linea = br.readLine();
-				v[i] = Double.parseDouble(linea);
+				sel.getVector().setValue(i, Double.parseDouble(linea));
 			}
-			vec = new VectorMath(v);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -40,6 +40,7 @@ public class FileWorker {
 				e.printStackTrace();
 			}
 		}
+		return sel;
 	}
 
 	public boolean escribirArchivo(VectorMath obj, double error, String ruta) {
