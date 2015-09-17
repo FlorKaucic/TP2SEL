@@ -33,6 +33,9 @@ public class GaussJordan {
 				}
 			else {
 				for (j = i; j < m1.getDimF(); j++) {
+					System.out.println("j: "+j);
+					System.out.println("m: "+m1.getValue(j, i));
+					System.out.println("k: "+(1/m1.getValue(j, i)));
 					k = 1 / m1.getValue(j, i);
 					m1.multiplicarFila(j, k);
 					vec.setValue(j, vec.getValue(j) * k);
@@ -46,7 +49,7 @@ public class GaussJordan {
 				}
 			}
 			i++;
-			System.out.println(i);
+			System.out.println("i: "+i);
 		}
 		return a;
 	}
