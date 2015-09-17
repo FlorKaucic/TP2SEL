@@ -15,7 +15,7 @@ public class Generador {
 		int i, j;
 
 		try {
-			fw = new FileWriter("05_CasoN1000.in");
+			fw = new FileWriter("Entrada/05_CasoN"+cant+".in");
 			pw = new PrintWriter(fw);
 			pw.println(cant);
 

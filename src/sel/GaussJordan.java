@@ -46,4 +46,54 @@ public class GaussJordan {
 		}
 		return a;
 	}
+	
+	
+	public static double[] gauss(MatrizMath a, VectorMath v) {
+	    int n = a.getDimC();
+
+	    for (int i=0; i<n; i++) {
+	        // Search for maximum in this column
+	        double maxEl = Math.abs(a.getValue(i, i));
+	        int maxRow = i;
+	        for(int k=i+1; k<n; k++) {
+	            if (Math.abs(a.getValue(k, i)) > maxEl) {
+	                maxEl = Math.abs(a.getValue(k, i));
+	                maxRow = k;
+	            }
+	        }
+
+	        // Swap maximum row with current row (column by column)
+	        for (int k=i; k<n; k++) {
+	            double tmp = a.getValue(maxRow,k);
+	            a.setValue(maxRow,k,a.getValue(i,k));
+	            a.setValue(i,k,tmp);
+	        }
+	        double tmp = v.getValue(maxRow);
+	        v.setValue(maxRow, v.getValue(i));
+	        v.setValue(i, tmp);
+
+	        // Make all rows below this one 0 in current column
+	        for(int k=i+1; k<n; k++) {
+	            double c = -a.getValue(k, i)/a.getValue(i,i);
+	            for(int j=i; j<n; j++) {
+	                if (i==j) {
+	                    a.setValue(k,j,0);
+	                } else {
+	                    a.setValue(k, j, a.getValue(k,j)+(c*a.getValue(i, j)));
+	                }
+	            }
+	            v.setValue(k, v.getValue(k)+(c*v.getValue(i)));
+	        }
+	    }
+
+	    // Solve equation Ax=b for an upper triangular matrix A
+	    double[] x = new double[n];
+	    for (int i=n-1; i>-1; i--) {
+	        x[i] = v.getValue(i)/a.getValue(i, i);
+	        for (int k=i-1; k>-1; k--) {
+	            v.setValue(k,v.getValue(k)-a.getValue(k,i) * x[i]);
+	        }
+	    }
+	    return x;
+	}
 }

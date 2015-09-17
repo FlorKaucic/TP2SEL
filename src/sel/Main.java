@@ -11,6 +11,7 @@ public class Main {
 		File folder = new File("Entrada");
 		File[] listOfFiles = folder.listFiles();
 		int cant = listOfFiles.length;
+		System.out.println(cant);
 		FileWorker fw = new FileWorker();
 		folder = new File("Salida");
 		folder.mkdir();
