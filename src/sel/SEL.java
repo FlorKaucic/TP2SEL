@@ -20,7 +20,7 @@ public class SEL {
 
 	public void resolver() {
 		//GaussJordan.gaussJordan(matriz1.clone(), vect1);
-		vect1 = new VectorMath(GaussJordan.gauss(matriz1.clone(), vect2));
+		vect1 = new VectorMath(GaussJordan.gauss(matriz1.clone(), vect2.clone()));
 	}
 
 	public double calcularErrorSolucion() {
