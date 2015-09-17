@@ -39,7 +39,6 @@ public class GaussJordan {
 						m1.multiplicarFila(j, k);
 						vec.setValue(j, vec.getValue(j) * k);
 					}
-
 					System.out.println("j: "+j);
 					System.out.println("m: "+m1.getValue(j, i));
 					System.out.println("k: "+(1/m1.getValue(j, i)));
