@@ -19,7 +19,7 @@ public class Main {
 				fw.leerArchivo("Entrada/"+name);
 				
 				System.out.println();
-				
+
 				System.out.println("Matriz:"+fw.getMatriz()+"\nVector:"+fw.getVector());
 				
 				// Inicio del calendar //Con long da 0
