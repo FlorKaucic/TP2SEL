@@ -1,7 +1,7 @@
 package sel;
 
 public class VectorMath {
-	private static final double errTol = 0.00001;
+	private static final double errTol = 1.0E-15;
 	double[] vec = null;
 	int dim;
 

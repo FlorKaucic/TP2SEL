@@ -11,7 +11,7 @@ public class Generador {
 		FileWriter fw = null;
 		PrintWriter pw = null;
 		double desvio = 25;
-		int cant = 5000;
+		int cant = 750;
 		Random randomDouble = new Random();
 		int i, j;
 
