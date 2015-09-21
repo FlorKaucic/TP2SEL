@@ -113,16 +113,16 @@ public class MatrizMath {
 				System.out.print(mat[i][j] +"\t");
 		}
 	}
-	/*
+	
 	@Override
 	public String toString() {
-		String cadena = "";
+		StringBuffer cadena = new StringBuffer();
 		for (int i = 0; i < this.dimF; i++) {
-			cadena += "\n";
+			cadena.append("\n");
 			for (int j = 0; j < this.dimC; j++)
-				cadena += (this.mat[i][j] + "\t");
+				cadena.append(this.mat[i][j] + "\t");
 		}
-		return cadena;
-	}*/
+		return cadena.toString();
+	}
 
 }

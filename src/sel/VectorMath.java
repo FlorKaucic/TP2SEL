@@ -129,11 +129,11 @@ public class VectorMath {
 
 	@Override
 	public String toString() {
-		String cadena = "";
+		StringBuffer cadena = new StringBuffer();
 		for (int i = 0; i < this.dim; i++) {
-			cadena += ("\n" + this.vec[i]);
+			cadena.append("\n" + this.vec[i]);
 		}
-		return cadena;
+		return cadena.toString();
 	}
 
 }

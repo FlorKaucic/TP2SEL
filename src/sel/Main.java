@@ -25,6 +25,8 @@ public class Main {
 				
 				SEL sel = fw.leerArchivo("Entrada/" + name);
 
+				//System.out.println("\n\nMatriz:"+sel.getMatriz().toString());
+				
 				long tIni = System.currentTimeMillis();
 
 				sel.resolver();
